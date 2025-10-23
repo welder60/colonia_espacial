@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ stats['nome'] }} - Dia {{ stats['dia'] }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="game-header">
+            <div class="header-info">
+                <h1>🏛️ {{ stats['nome'] }}</h1>
+                <p class="dia">📅 Dia {{ stats['dia'] }}</p>
+            </div>
+            <div class="header-actions">
+                <form action="/proximo_turno" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-primary">⏭️ Próximo Turno</button>
+                </form>
+                <form action="/reiniciar" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja realmente reiniciar?')">🔄 Reiniciar</button>
+                </form>
+            </div>
+        </header>
+
+        % if condicoes['status'] != 'jogando':
+        <div class="alert alert-{{ 'success' if condicoes['status'] == 'vitoria' else 'error' }}">
+            <h2>{{ '🎉 VITÓRIA!' if condicoes['status'] == 'vitoria' else '💀 DERROTA!' }}</h2>
+            <p>{{ condicoes['mensagem'] }}</p>
+        </div>
+        % end
+
+        <div class="game-grid">
+            <!-- Painel de Recursos -->
+            <section class="panel recursos-panel">
+                <h2>📦 Recursos</h2>
+                <div class="recursos-grid">
+                    % for nome, recurso in stats['recursos'].items():
+                    <div class="recurso-card">
+                        <div class="recurso-icon">
+                            % if nome == 'comida':
+                            🌾
+                            % elif nome == 'agua':
+                            💧
+                            % elif nome == 'energia':
+                            ⚡
+                            % elif nome == 'metal':
+                            🔩
+                            % end
+                        </div>
+                        <div class="recurso-info">
+                            <h3>{{ nome.capitalize() }}</h3>
+                            <p class="quantidade">{{ recurso['quantidade'] }} / {{ recurso['capacidade_maxima'] }}</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: {{ recurso['percentual'] }}%; background-color: {{ '#e74c3c' if recurso['percentual'] < 20 else '#f39c12' if recurso['percentual'] < 50 else '#27ae60' }}"></div>
+                            </div>
+                        </div>
+                    </div>
+                    % end
+                </div>
+            </section>
+
+            <!-- Painel de Estatísticas -->
+            <section class="panel stats-panel">
+                <h2>📊 Estatísticas da Colônia</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">👥 Colonos Vivos:</span>
+                        <span class="stat-value">{{ stats['colonos_vivos'] }}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">💀 Colonos Mortos:</span>
+                        <span class="stat-value">{{ stats['colonos_mortos'] }}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">❤️ Saúde Média:</span>
+                        <span class="stat-value">{{ stats['saude_media'] }}%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">😊 Felicidade Média:</span>
+                        <span class="stat-value">{{ stats['felicidade_media'] }}%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">🏗️ Edifícios:</span>
+                        <span class="stat-value">{{ stats['total_edificios'] }}</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">🏠 Capacidade Habitação:</span>
+                        <span class="stat-value">{{ stats['capacidade_habitacao'] }}</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Painel de Construção -->
+            <section class="panel construcao-panel">
+                <h2>🏗️ Construir Edifícios</h2>
+                <div class="edificios-grid">
+                    <div class="edificio-card">
+                        <h3>🌾 Fazenda</h3>
+                        <p>Produz comida</p>
+                        <p class="custo">💰 Metal: 20, Energia: 10</p>
+                        <form action="/construir/fazenda" method="POST">
+                            <button type="submit" class="btn btn-build">Construir</button>
+                        </form>
+                    </div>
+                    <div class="edificio-card">
+                        <h3>💧 Purificador</h3>
+                        <p>Produz água</p>
+                        <p class="custo">💰 Metal: 25, Energia: 15</p>
+                        <form action="/construir/purificador" method="POST">
+                            <button type="submit" class="btn btn-build">Construir</button>
+                        </form>
+                    </div>
+                    <div class="edificio-card">
+                        <h3>⚡ Gerador</h3>
+                        <p>Produz energia</p>
+                        <p class="custo">💰 Metal: 40</p>
+                        <form action="/construir/gerador" method="POST">
+                            <button type="submit" class="btn btn-build">Construir</button>
+                        </form>
+                    </div>
+                    <div class="edificio-card">
+                        <h3>🔩 Mina</h3>
+                        <p>Extrai metal</p>
+                        <p class="custo">💰 Metal: 15, Energia: 5</p>
+                        <form action="/construir/mina" method="POST">
+                            <button type="submit" class="btn btn-build">Construir</button>
+                        </form>
+                    </div>
+                    <div class="edificio-card">
+                        <h3>🏠 Habitação</h3>
+                        <p>Abriga colonos</p>
+                        <p class="custo">💰 Metal: 30, Energia: 5</p>
+                        <form action="/construir/habitacao" method="POST">
+                            <button type="submit" class="btn btn-build">Construir</button>
+                        </form>
+                    </div>
+                    <div class="edificio-card">
+                        <h3>🏥 Hospital</h3>
+                        <p>Cuida da saúde</p>
+                        <p class="custo">💰 Metal: 35, Energia: 10</p>
+                        <form action="/construir/hospital" method="POST">
+                            <button type="submit" class="btn btn-build">Construir</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Painel de Colonos -->
+            <section class="panel colonos-panel">
+                <h2>👥 Colonos ({{ stats['colonos_vivos'] }})</h2>
+                <div class="acoes-colonos">
+                    <form action="/contratar_colono" method="POST">
+                        <button type="submit" class="btn btn-secondary">➕ Contratar Novo Colono</button>
+                    </form>
+                </div>
+                <div class="colonos-lista">
+                    % for colono in stats['colonos'][:10]:
+                    <div class="colono-card">
+                        <h4>{{ colono['nome'] }}</h4>
+                        <p class="profissao">{{ colono['profissao'] }}</p>
+                        <div class="colono-stats">
+                            <div class="colono-stat">
+                                <span>❤️ Saúde:</span>
+                                <div class="mini-progress">
+                                    <div class="mini-fill" style="width: {{ colono['saude'] }}%; background-color: {{ '#e74c3c' if colono['saude'] < 30 else '#f39c12' if colono['saude'] < 60 else '#27ae60' }}"></div>
+                                </div>
+                                <span>{{ colono['saude'] }}%</span>
+                            </div>
+                            <div class="colono-stat">
+                                <span>😊 Felicidade:</span>
+                                <div class="mini-progress">
+                                    <div class="mini-fill" style="width: {{ colono['felicidade'] }}%; background-color: {{ '#e74c3c' if colono['felicidade'] < 30 else '#f39c12' if colono['felicidade'] < 60 else '#27ae60' }}"></div>
+                                </div>
+                                <span>{{ colono['felicidade'] }}%</span>
+                            </div>
+                        </div>
+                    </div>
+                    % end
+                    % if len(stats['colonos']) > 10:
+                    <p class="mais-colonos">... e mais {{ len(stats['colonos']) - 10 }} colonos</p>
+                    % end
+                </div>
+            </section>
+
+            <!-- Painel de Edifícios -->
+            <section class="panel edificios-panel">
+                <h2>🏛️ Edifícios Construídos ({{ stats['total_edificios'] }})</h2>
+                <div class="edificios-lista">
+                    % for edificio in stats['edificios']:
+                    <div class="edificio-item">
+                        <h4>{{ edificio['nome'] }} (Nível {{ edificio['nivel'] }})</h4>
+                        <p>Status: {{ '✅ Ativo' if edificio['status'] == 'ativo' else '⚠️ Inativo' }}</p>
+                        <p class="producao-total">Produção Total: {{ edificio['producao_total'] }}</p>
+                    </div>
+                    % end
+                </div>
+            </section>
+
+            <!-- Painel de Eventos -->
+            % if stats['eventos_recentes']:
+            <section class="panel eventos-panel">
+                <h2>📰 Eventos Recentes</h2>
+                <div class="eventos-lista">
+                    % for evento in reversed(stats['eventos_recentes']):
+                    <div class="evento-item">
+                        <h4>{{ evento['nome'] }}</h4>
+                        <p>{{ evento['descricao'] }}</p>
+                    </div>
+                    % end
+                </div>
+            </section>
+            % end
+        </div>
+
+        <footer class="footer">
+            <p>Projeto de Orientação a Objetos - UnB | Padrão MVC | Persistência com Pickle</p>
+        </footer>
+    </div>
+</body>
+</html>
+

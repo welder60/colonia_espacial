@@ -1,0 +1,515 @@
+/* Reset e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: #667eea;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1em;
+}
+
+/* Menu Principal */
+.main-menu {
+    display: grid;
+    gap: 20px;
+}
+
+.menu-card, .info-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.menu-card h2, .info-card h3 {
+    color: #667eea;
+    margin-bottom: 20px;
+}
+
+.menu-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.option-card {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+}
+
+.option-card h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.option-card input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.option-card input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* Botões */
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #3498db;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+.btn-build {
+    background: #27ae60;
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+
+.btn-build:hover {
+    background: #229954;
+}
+
+/* Alertas */
+.alert {
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.alert-error {
+    background: #fee;
+    color: #c00;
+    border: 2px solid #fcc;
+}
+
+.alert-success {
+    background: #efe;
+    color: #0a0;
+    border: 2px solid #cfc;
+}
+
+.alert h2 {
+    margin-bottom: 10px;
+}
+
+/* Info Card */
+.info-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-content li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-content li:last-child {
+    border-bottom: none;
+}
+
+/* Game Header */
+.game-header {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.game-header h1 {
+    color: #667eea;
+    font-size: 2em;
+}
+
+.dia {
+    color: #666;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.header-actions .btn {
+    width: auto;
+}
+
+/* Game Grid */
+.game-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.panel {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.panel h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
+}
+
+/* Recursos */
+.recursos-grid {
+    display: grid;
+    gap: 15px;
+}
+
+.recurso-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+}
+
+.recurso-icon {
+    font-size: 2.5em;
+}
+
+.recurso-info {
+    flex: 1;
+}
+
+.recurso-info h3 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.quantidade {
+    color: #666;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+/* Estatísticas */
+.stats-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.stat-label {
+    color: #666;
+    font-weight: 600;
+}
+
+.stat-value {
+    color: #333;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Construção */
+.edificios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.edificio-card {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    text-align: center;
+}
+
+.edificio-card h3 {
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.edificio-card p {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+}
+
+.custo {
+    font-weight: bold;
+    color: #e67e22;
+    font-size: 0.85em !important;
+}
+
+/* Colonos */
+.acoes-colonos {
+    margin-bottom: 20px;
+}
+
+.colonos-lista {
+    display: grid;
+    gap: 12px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.colono-card {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+}
+
+.colono-card h4 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.profissao {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.colono-stats {
+    display: grid;
+    gap: 8px;
+}
+
+.colono-stat {
+    display: grid;
+    grid-template-columns: 100px 1fr 50px;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9em;
+}
+
+.mini-progress {
+    height: 12px;
+    background: #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.mini-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.mais-colonos {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 10px;
+}
+
+/* Edifícios Lista */
+.edificios-lista {
+    display: grid;
+    gap: 12px;
+}
+
+.edificio-item {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #27ae60;
+}
+
+.edificio-item h4 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.edificio-item p {
+    color: #666;
+    font-size: 0.9em;
+    margin: 3px 0;
+}
+
+.producao-total {
+    font-weight: bold;
+    color: #27ae60;
+}
+
+/* Eventos */
+.eventos-lista {
+    display: grid;
+    gap: 12px;
+}
+
+.evento-item {
+    padding: 15px;
+    background: #fff3cd;
+    border-radius: 10px;
+    border-left: 4px solid #ffc107;
+}
+
+.evento-item h4 {
+    color: #856404;
+    margin-bottom: 5px;
+}
+
+.evento-item p {
+    color: #856404;
+    font-size: 0.9em;
+}
+
+/* Footer */
+.footer {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-top: 30px;
+    color: #666;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .game-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .header-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .header-actions .btn {
+        width: 100%;
+    }
+    
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .edificios-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+/* Scrollbar personalizada */
+.colonos-lista::-webkit-scrollbar {
+    width: 8px;
+}
+
+.colonos-lista::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.colonos-lista::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+.colonos-lista::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
+
