@@ -8,6 +8,7 @@ Jogo web de gerenciamento de colônia espacial desenvolvido em Python, demonstra
 
 ## 📹 Vídeos Explicativos:
     - Apresentação do Jogo: https://youtu.be/Ay6RmZkQJbQ
+    - Demonstração do Jogo: https://youtu.be/ZrP1Oou2fNw
     
 ## 🎯 Objetivos do Projeto
 
