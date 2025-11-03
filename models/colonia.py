@@ -340,14 +340,14 @@ class Colonia:
     
     def salvar(self, caminho: str = None):
         """
-        Salva o estado da colônia usando pickle.
+        Salva o estado atual da colônia em um arquivo pickle.
         Demonstra persistência de dados.
         
         Args:
             caminho: Caminho do arquivo (usa padrão se não fornecido)
         """
         if caminho is None:
-            caminho = '/home/ubuntu/colony_game/saves/colonia_save.pkl'
+            caminho = 'saves/colonia_save.pkl'
         
         os.makedirs(os.path.dirname(caminho), exist_ok=True)
         
@@ -367,7 +367,7 @@ class Colonia:
             Instância de Colonia carregada
         """
         if caminho is None:
-            caminho = '/home/ubuntu/colony_game/saves/colonia_save.pkl'
+            caminho = 'saves/colonia_save.pkl'
         
         if not os.path.exists(caminho):
             return None

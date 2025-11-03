@@ -1,0 +1,40 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin123",
+      "nome_completo": "Administrador",
+      "save_file": "saves/admin_colonia.pkl"
+    },
+    {
+      "id": 2,
+      "username": "aluno1",
+      "password": "unb2024",
+      "nome_completo": "Aluno Um",
+      "save_file": "saves/aluno1_colonia.pkl"
+    },
+    {
+      "id": 3,
+      "username": "aluno2",
+      "password": "unb2024",
+      "nome_completo": "Aluno Dois",
+      "save_file": "saves/aluno2_colonia.pkl"
+    },
+    {
+      "id": 4,
+      "username": "professor",
+      "password": "prof123",
+      "nome_completo": "Professor",
+      "save_file": "saves/professor_colonia.pkl"
+    },
+    {
+      "id": 5,
+      "username": "teste",
+      "password": "teste",
+      "nome_completo": "Usuário Teste",
+      "save_file": "saves/teste_colonia.pkl"
+    }
+  ]
+}
+

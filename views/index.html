@@ -9,65 +9,89 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>🚀 Gerenciamento de Colônia Espacial</h1>
-            <p class="subtitle">Projeto de Orientação a Objetos - Universidade de Brasília (UnB)</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <div>
+                    <h1>🚀 Gerenciamento de Colônia Espacial</h1>
+                    <p class="subtitle">Projeto de Orientação a Objetos - Universidade de Brasília (UnB)</p>
+                </div>
+                % if defined('usuario'):
+                <div class="user-info">
+                    <span>👤 {{ usuario['nome_completo'] }}</span>
+                    % if usuario['username'] == 'admin':
+                    <form action="/logs" method="GET" style="display: inline; margin-right: 10px;">
+                        <button type="submit" class="btn btn-secondary" style="padding: 8px 15px; font-size: 0.9em;">📊 Logs</button>
+                    </form>
+                    % end
+                    <form action="/logout" method="GET" style="display: inline;">
+                        <button type="submit" class="btn-logout">🚺 Sair</button>
+                    </form>
+                </div>
+                % end
+            </div>
         </header>
 
-        <main class="main-menu">
+        % if defined('erro'):
+        <div class="alert alert-error">
+            <p>❌ {{ erro }}</p>
+        </div>
+        % end
+
+        <div class="main-menu">
             <div class="menu-card">
-                <h2>Bem-vindo, Comandante!</h2>
+                <h2>🎮 Bem-vindo, Comandante!</h2>
                 <p>Gerencie sua colônia espacial, construa edifícios, cuide dos colonos e garanta a sobrevivência da humanidade em um novo mundo.</p>
                 
                 <div class="menu-options">
                     <div class="option-card">
-                        <h3>🆕 Novo Jogo</h3>
+                        <h3>🎲 Novo Jogo</h3>
                         <form action="/novo_jogo" method="POST">
                             <input type="text" name="nome_colonia" placeholder="Nome da Colônia" required>
                             <button type="submit" class="btn btn-primary">Iniciar Nova Colônia</button>
                         </form>
                     </div>
-
+                    
                     <div class="option-card">
                         <h3>💾 Carregar Jogo</h3>
+                        % if defined('tem_save') and tem_save:
+                        <p style="color: #27ae60; margin-bottom: 15px;">✅ Você tem um jogo salvo</p>
+                        % else:
+                        <p style="color: #999; margin-bottom: 15px;">ℹ️ Nenhum jogo salvo encontrado</p>
+                        % end
                         <form action="/carregar_jogo" method="POST">
-                            <button type="submit" class="btn btn-secondary">Carregar Jogo Salvo</button>
+                            <button type="submit" class="btn btn-secondary" 
+                                % if not (defined('tem_save') and tem_save):
+                                disabled style="opacity: 0.5; cursor: not-allowed;"
+                                % end
+                            >Carregar Jogo Salvo</button>
                         </form>
                     </div>
                 </div>
-
-                % if defined('erro'):
-                <div class="alert alert-error">
-                    ⚠️ {{ erro }}
-                </div>
-                % end
             </div>
 
             <div class="info-card">
                 <h3>📚 Sobre o Projeto</h3>
-                <div class="info-content">
-                    <p><strong>Conceitos de POO Implementados:</strong></p>
-                    <ul>
-                        <li>✅ <strong>Encapsulamento:</strong> Atributos privados com getters/setters</li>
-                        <li>✅ <strong>Herança:</strong> Classes derivadas de Entidade e Edificio</li>
-                        <li>✅ <strong>Polimorfismo:</strong> Métodos sobrescritos nas subclasses</li>
-                        <li>✅ <strong>Abstração:</strong> Classes abstratas (Entidade, Edificio)</li>
-                        <li>✅ <strong>Composição:</strong> Colônia contém Colonos, Edifícios e Recursos</li>
-                        <li>✅ <strong>Agregação:</strong> Relacionamentos entre objetos</li>
-                    </ul>
-                    
-                    <p><strong>Arquitetura:</strong></p>
-                    <ul>
-                        <li>🏗️ <strong>Padrão MVC:</strong> Model-View-Controller</li>
-                        <li>💾 <strong>Persistência:</strong> Pickle para salvar/carregar</li>
-                        <li>🌐 <strong>Web Framework:</strong> Bottle (Python)</li>
-                    </ul>
-                </div>
+                <p><strong>Conceitos de POO Implementados:</strong></p>
+                <ul class="conceitos-lista">
+                    <li>✅ <strong>Encapsulamento:</strong> Atributos privados com getters/setters</li>
+                    <li>✅ <strong>Herança:</strong> Classes derivadas de Entidade e Edifício</li>
+                    <li>✅ <strong>Polimorfismo:</strong> Métodos sobrescritos nas subclasses</li>
+                    <li>✅ <strong>Abstração:</strong> Classes abstratas (Entidade, Edifício)</li>
+                    <li>✅ <strong>Composição:</strong> Colônia contém Colonos, Edifícios e Recursos</li>
+                    <li>✅ <strong>Agregação:</strong> Relacionamentos entre objetos</li>
+                </ul>
+                
+                <p style="margin-top: 20px;"><strong>Arquitetura:</strong></p>
+                <ul class="conceitos-lista">
+                    <li>📐 <strong>Padrão MVC:</strong> Model-View-Controller</li>
+                    <li>💾 <strong>Persistência:</strong> Pickle para salvar/carregar</li>
+                    <li>🌐 <strong>Web Framework:</strong> Bottle (Python)</li>
+                    <li>🔐 <strong>Autenticação:</strong> Sistema de login com JSON</li>
+                </ul>
             </div>
-        </main>
+        </div>
 
         <footer class="footer">
-            <p>Desenvolvido para a disciplina de Orientação a Objetos - UnB</p>
-            <p>Framework: Bottle | Linguagem: Python 3 | Persistência: Pickle</p>
+            <p>Projeto de Orientação a Objetos - UnB | Padrão MVC | Persistência com Pickle</p>
         </footer>
     </div>
 </body>

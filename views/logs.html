@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs do Sistema - Colony Game</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .logs-container {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            max-height: 600px;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+        
+        .log-line {
+            padding: 5px;
+            border-bottom: 1px solid #333;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .log-line:hover {
+            background: #2d2d2d;
+        }
+        
+        .log-DEBUG { color: #808080; }
+        .log-INFO { color: #4ec9b0; }
+        .log-WARNING { color: #dcdcaa; }
+        .log-ERROR { color: #f48771; }
+        .log-CRITICAL { color: #f44747; font-weight: bold; }
+        
+        .logs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .logs-section {
+            margin-bottom: 30px;
+        }
+        
+        .refresh-btn {
+            background: #007acc;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        
+        .refresh-btn:hover {
+            background: #005a9e;
+        }
+        
+        .empty-logs {
+            text-align: center;
+            color: #808080;
+            padding: 40px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <div>
+                    <h1>📊 Logs do Sistema</h1>
+                    <p class="subtitle">Monitoramento e Debugging</p>
+                </div>
+                <div class="user-info">
+                    <span>👤 {{ usuario['nome_completo'] }}</span>
+                    <form action="/menu" method="GET" style="display: inline; margin-left: 10px;">
+                        <button type="submit" class="btn btn-secondary">🏠 Menu</button>
+                    </form>
+                    <form action="/logout" method="GET" style="display: inline;">
+                        <button type="submit" class="btn-logout">🚪 Sair</button>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-menu">
+            <!-- Seção de Erros -->
+            <div class="logs-section">
+                <div class="menu-card">
+                    <div class="logs-header">
+                        <h2>🔴 Logs de Erro (Últimos 50)</h2>
+                        <button onclick="location.reload()" class="refresh-btn">🔄 Atualizar</button>
+                    </div>
+                    
+                    <div class="logs-container">
+                        % if erros and len(erros) > 0:
+                            % for linha in erros:
+                            <div class="log-line log-ERROR">{{ linha.strip() }}</div>
+                            % end
+                        % else:
+                        <div class="empty-logs">✅ Nenhum erro registrado</div>
+                        % end
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Logs Gerais -->
+            <div class="logs-section">
+                <div class="menu-card">
+                    <div class="logs-header">
+                        <h2>📋 Logs Gerais (Últimos 100)</h2>
+                        <button onclick="location.reload()" class="refresh-btn">🔄 Atualizar</button>
+                    </div>
+                    
+                    <div class="logs-container">
+                        % if logs and len(logs) > 0:
+                            % for linha in logs:
+                                % if 'DEBUG' in linha:
+                                <div class="log-line log-DEBUG">{{ linha.strip() }}</div>
+                                % elif 'INFO' in linha:
+                                <div class="log-line log-INFO">{{ linha.strip() }}</div>
+                                % elif 'WARNING' in linha:
+                                <div class="log-line log-WARNING">{{ linha.strip() }}</div>
+                                % elif 'ERROR' in linha:
+                                <div class="log-line log-ERROR">{{ linha.strip() }}</div>
+                                % elif 'CRITICAL' in linha:
+                                <div class="log-line log-CRITICAL">{{ linha.strip() }}</div>
+                                % else:
+                                <div class="log-line">{{ linha.strip() }}</div>
+                                % end
+                            % end
+                        % else:
+                        <div class="empty-logs">ℹ️ Nenhum log disponível</div>
+                        % end
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informações -->
+            <div class="info-card">
+                <h3>ℹ️ Sobre os Logs</h3>
+                <p><strong>Níveis de Log:</strong></p>
+                <ul class="conceitos-lista">
+                    <li><span style="color: #808080;">⚫</span> <strong>DEBUG:</strong> Informações detalhadas para debugging</li>
+                    <li><span style="color: #4ec9b0;">🔵</span> <strong>INFO:</strong> Informações gerais sobre operações</li>
+                    <li><span style="color: #dcdcaa;">🟡</span> <strong>WARNING:</strong> Avisos de situações anormais</li>
+                    <li><span style="color: #f48771;">🟠</span> <strong>ERROR:</strong> Erros que afetam funcionalidades</li>
+                    <li><span style="color: #f44747;">🔴</span> <strong>CRITICAL:</strong> Erros críticos do sistema</li>
+                </ul>
+                
+                <p style="margin-top: 20px;"><strong>Arquivos de Log:</strong></p>
+                <ul class="conceitos-lista">
+                    <li>📄 <code>logs/colony_game.log</code> - Todos os logs</li>
+                    <li>🔴 <code>logs/errors.log</code> - Apenas erros</li>
+                    <li>💾 Rotação automática a cada 5MB</li>
+                    <li>📦 Mantém até 5 backups</li>
+                </ul>
+
+                <p style="margin-top: 20px;"><strong>Eventos Registrados:</strong></p>
+                <ul class="conceitos-lista">
+                    <li>🔐 Login e logout de usuários</li>
+                    <li>🎮 Criação e carregamento de jogos</li>
+                    <li>🏗️ Construção de edifícios</li>
+                    <li>👥 Contratação de colonos</li>
+                    <li>⏭️ Processamento de turnos</li>
+                    <li>💾 Salvamento de dados</li>
+                    <li>❌ Todos os erros e exceções</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Sistema de Logging | Acesso restrito ao administrador</p>
+        </footer>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Gerenciamento de Colônia</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚀 Gerenciamento de Colônia Espacial</h1>
+            <p class="subtitle">Projeto de Orientação a Objetos - Universidade de Brasília (UnB)</p>
+        </header>
+
+        <div class="main-menu">
+            <div class="menu-card">
+                <h2>🔐 Login do Sistema</h2>
+                
+                % if defined('erro'):
+                <div class="alert alert-error">
+                    <p>❌ {{ erro }}</p>
+                </div>
+                % end
+
+                <div class="login-container">
+                    <form action="/login" method="POST">
+                        <div class="form-group">
+                            <label for="username">👤 Usuário:</label>
+                            <input type="text" id="username" name="username" placeholder="Digite seu usuário" required autofocus>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">🔑 Senha:</label>
+                            <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                    </form>
+                </div>
+
+                <div class="login-info">
+                    <h3>ℹ️ Informações</h3>
+                    <ul>
+                        <li>Cada usuário possui sua própria colônia</li>
+                        <li>O progresso é salvo automaticamente</li>
+                        <li>Você pode continuar de onde parou após o login</li>
+                    </ul>
+                </div>
+
+                <div class="usuarios-demo">
+                    <h3>👥 Usuários de Demonstração</h3>
+                    <table class="tabela-usuarios">
+                        <thead>
+                            <tr>
+                                <th>Usuário</th>
+                                <th>Senha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>admin</td>
+                                <td>admin123</td>
+                            </tr>
+                            <tr>
+                                <td>aluno1</td>
+                                <td>unb2024</td>
+                            </tr>
+                            <tr>
+                                <td>aluno2</td>
+                                <td>unb2024</td>
+                            </tr>
+                            <tr>
+                                <td>professor</td>
+                                <td>prof123</td>
+                            </tr>
+                            <tr>
+                                <td>teste</td>
+                                <td>teste</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>📚 Sobre o Projeto</h3>
+                <p><strong>Conceitos de POO Implementados:</strong></p>
+                <ul class="conceitos-lista">
+                    <li>✅ <strong>Encapsulamento:</strong> Atributos privados com getters/setters</li>
+                    <li>✅ <strong>Herança:</strong> Classes derivadas de Entidade e Edifício</li>
+                    <li>✅ <strong>Polimorfismo:</strong> Métodos sobrescritos nas subclasses</li>
+                    <li>✅ <strong>Abstração:</strong> Classes abstratas (Entidade, Edifício)</li>
+                    <li>✅ <strong>Composição:</strong> Colônia contém Colonos, Edifícios e Recursos</li>
+                    <li>✅ <strong>Agregação:</strong> Relacionamentos entre objetos</li>
+                </ul>
+                
+                <p style="margin-top: 20px;"><strong>Arquitetura:</strong></p>
+                <ul class="conceitos-lista">
+                    <li>📐 <strong>Padrão MVC:</strong> Model-View-Controller</li>
+                    <li>💾 <strong>Persistência:</strong> Pickle para salvar/carregar</li>
+                    <li>🌐 <strong>Web Framework:</strong> Bottle (Python)</li>
+                    <li>🔐 <strong>Autenticação:</strong> Sistema de login com JSON</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Projeto de Orientação a Objetos - UnB | Padrão MVC | Persistência com Pickle</p>
+        </footer>
+    </div>
+</body>
+</html>
+

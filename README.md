@@ -6,10 +6,6 @@
 
 Jogo web de gerenciamento de colônia espacial desenvolvido em Python, demonstrando todos os conceitos fundamentais de Programação Orientada a Objetos (POO), implementando o padrão arquitetural MVC (Model-View-Controller) e utilizando persistência de dados com Pickle.
 
-## 📹 Vídeos Explicativos:
-    - Apresentação do Jogo: https://youtu.be/Ay6RmZkQJbQ
-    - Demonstração do Jogo: https://youtu.be/ZrP1Oou2fNw
-    
 ## 🎯 Objetivos do Projeto
 
 Este projeto foi desenvolvido para demonstrar de forma prática e completa os seguintes conceitos:
@@ -80,11 +76,6 @@ Localização: `app.py`
 - **Funcionalidade**: Serialização completa do objeto `Colonia`
 - **Salvamento**: Automático a cada turno
 - **Carregamento**: Ao iniciar o jogo
-
-## 📊 Gráfico UML
-
-<img width="2250" height="2052" alt="diagrama_uml" src="https://github.com/user-attachments/assets/0c31e667-a218-4d65-bc34-a5257949ae9c" />
-
 
 ## 🎮 Mecânicas do Jogo
 
@@ -228,6 +219,6 @@ Projeto acadêmico - UnB
 ---
 
 **Universidade de Brasília (UnB)**  
-**Disciplina**: Orientação a Objetos
+**Disciplina**: Orientação a Objetos  
 **Ano**: 2025
 

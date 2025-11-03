@@ -513,3 +513,356 @@ body {
     background: #764ba2;
 }
 
+
+
+/* Layout 2 linhas x 3 colunas */
+.game-grid-2x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Estilos compactos para cards de edifícios */
+.edificios-grid-compact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.edificio-card-compact {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    text-align: center;
+}
+
+.edificio-card-compact h3 {
+    font-size: 1em;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.edificio-card-compact .custo {
+    font-size: 0.85em;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.btn-build-small {
+    padding: 6px 12px;
+    font-size: 0.85em;
+    width: 100%;
+}
+
+/* Estilos compactos para colonos */
+.colonos-lista-compact {
+    display: grid;
+    gap: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.colono-card-compact {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.colono-card-compact h4 {
+    font-size: 0.95em;
+    margin-bottom: 3px;
+    color: #333;
+}
+
+.profissao-small {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.colono-stats-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-mini {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8em;
+}
+
+.stat-mini span:first-child {
+    width: 20px;
+}
+
+.stat-mini span:last-child {
+    width: 40px;
+    text-align: right;
+}
+
+.btn-secondary-small {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.mais-colonos-small {
+    text-align: center;
+    color: #666;
+    font-size: 0.85em;
+    padding: 8px;
+}
+
+/* Estilos compactos para edifícios construídos */
+.edificios-lista-compact {
+    display: grid;
+    gap: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.edificio-item-compact {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #27ae60;
+}
+
+.edificio-item-compact h4 {
+    font-size: 0.9em;
+    margin-bottom: 3px;
+    color: #333;
+}
+
+.edificio-item-compact p {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.mais-edificios-small {
+    text-align: center;
+    color: #666;
+    font-size: 0.85em;
+    padding: 8px;
+}
+
+/* Estilos compactos para eventos */
+.eventos-lista-compact {
+    display: grid;
+    gap: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.evento-item-compact {
+    background: #fff9e6;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #f39c12;
+}
+
+.evento-item-compact h4 {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.evento-item-compact p {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.sem-eventos {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Responsividade para layout 2x3 */
+@media (max-width: 1200px) {
+    .game-grid-2x3 {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+    }
+}
+
+@media (max-width: 768px) {
+    .game-grid-2x3 {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+}
+
+
+
+/* Estilos para tela de login */
+.login-container {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn-block {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.login-info {
+    background: #e8f4f8;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.login-info h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.login-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.login-info ul li {
+    padding: 8px 0;
+    color: #555;
+}
+
+.login-info ul li:before {
+    content: "✓ ";
+    color: #27ae60;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.usuarios-demo {
+    background: #fff9e6;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.usuarios-demo h3 {
+    color: #f39c12;
+    margin-bottom: 15px;
+}
+
+.tabela-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.tabela-usuarios thead {
+    background: #667eea;
+    color: white;
+}
+
+.tabela-usuarios th,
+.tabela-usuarios td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabela-usuarios tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.tabela-usuarios td {
+    font-family: 'Courier New', monospace;
+    color: #555;
+}
+
+.conceitos-lista {
+    list-style: none;
+    padding-left: 0;
+}
+
+.conceitos-lista li {
+    padding: 8px 0;
+    color: #555;
+}
+
+.alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.alert-error {
+    background: #fee;
+    color: #c33;
+    border-left: 4px solid #c33;
+}
+
+.alert-success {
+    background: #efe;
+    color: #3c3;
+    border-left: 4px solid #3c3;
+}
+
+/* Melhorias no header do jogo */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.user-info span {
+    color: white;
+    font-weight: bold;
+}
+
+.btn-logout {
+    background: #e74c3c;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.btn-logout:hover {
+    background: #c0392b;
+}
+
